@@ -2,7 +2,7 @@ import React from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-function Log_SignInfo() {
+function LogSignInfo() {
   return (
     <Container className="Log in">
       <body>
@@ -34,4 +34,4 @@ function Log_SignInfo() {
   );
 }
 
-export default Log_SignInfo;
+export default LogSignInfo;

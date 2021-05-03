@@ -2,7 +2,7 @@ import React from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-function Log_PersonalInfo() {
+function LogPersonalInfo() {
   return (
     <Container className="Log in">
       <body>
@@ -14,27 +14,27 @@ function Log_PersonalInfo() {
             <label htmlFor="first name">
               <b>First Name</b>
             </label>
-            <input type="text" placeholder="Enter first name" name="first name" required></input>
+            <input type="text" placeholder="Enter first name" name="first name" required />
 
             <label htmlFor="second name">
               <b>Second Name</b>
             </label>
-            <input type="text" placeholder="Enter second name" name="second name" required></input>
+            <input type="text" placeholder="Enter second name" name="second name" required />
 
             <label htmlFor="date of ">
               <b>Birth Date</b>
             </label>
-            <input type="date" placeholder="Enter birth date" name="birth date" required></input>
+            <input type="date" placeholder="Enter birth date" name="birth date" required />
 
             <label htmlFor="passport no">
               <b>Passport No</b>
             </label>
-            <input type="text" placeholder="Enter passport no" name="passport no" required></input>
+            <input type="text" placeholder="Enter passport no" name="passport no" required />
 
             <label htmlFor="identification no">
               <b>Identification No</b>
             </label>
-            <input type="text" placeholder="Enter identification no" name="identification no" required></input>
+            <input type="text" placeholder="Enter identification no" name="identification no" required />
 
             <Button type="submit">Next</Button>
           </div>
@@ -44,4 +44,4 @@ function Log_PersonalInfo() {
   );
 }
 
-export default Log_PersonalInfo;
+export default LogPersonalInfo;
