@@ -5,6 +5,7 @@ import { useState } from 'react';
 function SearchBar() {
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
+  const [date, setDate] = useState('');
 
   function handleSwapClick(e) {
     e.preventDefault();
@@ -45,7 +46,7 @@ function SearchBar() {
                 <th>
                   <input
                     type="text"
-                    id="C"
+                    id="departure"
                     name="departure"
                     value={departure}
                     onChange={(event) => setDeparture(event.target.value)}
@@ -65,6 +66,13 @@ function SearchBar() {
                 </th>
                 <th>
                   <input type="date" id="date" name="date" />
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    value={date}
+                    onChange={(event) => setDate(event.target.value)}
+                  />
                 </th>
                 <th>
                   <Button onClick={handleSearchClick}> Search</Button>
