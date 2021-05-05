@@ -65,7 +65,6 @@ function SearchBar() {
                   />
                 </th>
                 <th>
-                  <input type="date" id="date" name="date" />
                   <input
                     type="date"
                     id="date"

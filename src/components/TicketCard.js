@@ -3,11 +3,11 @@ import './TicketCard.css';
 
 function TicketCard(departure, departure_date, departure_time, destination, destination_date, destination_time, cost) {
   return (
-    <article className="card">
+    <article className="card fl-left">
       <section className="price">
         <span>{cost}</span>
       </section>
-      <section className="info">
+      <section className="card-cont">
         <h3>from: {departure}</h3>
         <div className="ticket-date">
           <time>
