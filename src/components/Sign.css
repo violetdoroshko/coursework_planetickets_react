@@ -46,3 +46,7 @@ span.psw {
     float: none;
   }
 }
+
+.personal-info, .passport-info{
+  display:  flex;
+}

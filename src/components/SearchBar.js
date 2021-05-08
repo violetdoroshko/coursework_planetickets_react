@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form, Table } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
@@ -66,7 +66,9 @@ const SearchBar = () => {
                 <input type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)} />
               </th>
               <th>
-                <Button onClick={handleSearchClick}>Search</Button>
+                <Button onClick={handleSearchClick}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </Button>
               </th>
             </tr>
           </tbody>
