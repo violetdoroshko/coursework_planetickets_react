@@ -1,7 +1,7 @@
 import SearchBar from '../components/SearchBar';
 
-function Aviasales() {
+const Aviasales = () => {
   return SearchBar();
-}
+};
 
 export default Aviasales;

@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-function Sign() {
+const Sign = () => {
   const [uname, handleNameChange] = useState('');
   const [psw, handlePasswordChange] = useState('');
 
-  function signIn(e) {
-    e.preventDefault();
+  const signIn = () => {
     alert('login ' + uname + ' password ' + psw);
-  }
+  };
 
   return (
     <Container className="Sign in">
@@ -24,7 +23,6 @@ function Sign() {
             <input
               type="text"
               placeholder="Enter Username"
-              id="uname"
               name="uname"
               value={uname}
               onChange={(event) => handleNameChange(event.target.value)}
@@ -35,7 +33,6 @@ function Sign() {
             <input
               type="password"
               placeholder="Enter Password"
-              id="psw"
               name="psw"
               value={psw}
               onChange={(event) => handlePasswordChange(event.target.value)}
@@ -46,6 +43,6 @@ function Sign() {
       </body>
     </Container>
   );
-}
+};
 
 export default Sign;

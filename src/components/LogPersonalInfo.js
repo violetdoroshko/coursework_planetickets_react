@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-function LogPersonalInfo() {
+const LogPersonalInfo = () => {
   const [firstName, handleFirstNameChange] = useState('');
   const [secondName, handleSecondNameChange] = useState('');
   const [birthDate, handleBirthDateChange] = useState('');
@@ -10,7 +10,6 @@ function LogPersonalInfo() {
   const [identificationNo, handleIdentificationNoChange] = useState('');
 
   function Next(e) {
-    e.preventDefault();
     //LogSignInfo(firstName, secondName, birthDate, passportNo, identificationNo);
   }
 
@@ -92,6 +91,6 @@ function LogPersonalInfo() {
       </body>
     </Container>
   );
-}
+};
 
 export default LogPersonalInfo;

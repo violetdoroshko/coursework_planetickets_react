@@ -1,7 +1,15 @@
 import React from 'react';
 import './TicketCard.css';
 
-function TicketCard(departure, departure_date, departure_time, destination, destination_date, destination_time, cost) {
+const TicketCard = (
+  departure,
+  departure_date,
+  departure_time,
+  destination,
+  destination_date,
+  destination_time,
+  cost,
+) => {
   return (
     <article className="card fl-left">
       <section className="price">
@@ -31,6 +39,6 @@ function TicketCard(departure, departure_date, departure_time, destination, dest
       </section>
     </article>
   );
-}
+};
 
 export default TicketCard;

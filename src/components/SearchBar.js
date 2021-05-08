@@ -2,20 +2,18 @@ import React from 'react';
 import { Button, Container, Form, Table } from 'react-bootstrap';
 import { useState } from 'react';
 
-function SearchBar() {
+const SearchBar = () => {
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
 
-  function handleSwapClick(e) {
-    e.preventDefault();
+  function handleSwapClick() {
     const temp = departure;
     setDeparture(destination);
     setDestination(temp);
   }
 
-  function handleSearchClick(e) {
-    e.preventDefault();
+  function handleSearchClick() {
     console.log('Search.');
   }
 
@@ -46,7 +44,6 @@ function SearchBar() {
                 <th>
                   <input
                     type="text"
-                    id="departure"
                     name="departure"
                     value={departure}
                     onChange={(event) => setDeparture(event.target.value)}
@@ -58,20 +55,13 @@ function SearchBar() {
                 <th>
                   <input
                     type="text"
-                    id="destination"
                     name="destination"
                     value={destination}
                     onChange={(event) => setDestination(event.target.value)}
                   />
                 </th>
                 <th>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={date}
-                    onChange={(event) => setDate(event.target.value)}
-                  />
+                  <input type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)} />
                 </th>
                 <th>
                   <Button onClick={handleSearchClick}> Search</Button>
@@ -83,6 +73,6 @@ function SearchBar() {
       </div>
     </Container>
   );
-}
+};
 
 export default SearchBar;

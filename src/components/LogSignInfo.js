@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-function LogSignInfo() {
+const LogSignInfo = () => {
   const [uname, handleNameChange] = useState('');
   const [psw, handlePasswordChange] = useState('');
   const [psw_repeat, handleRepeatPasswordChange] = useState('');
 
-  function Register(e) {
-    e.preventDefault();
+  function Register() {
     /*alert(
       'first name ' +
         firstName +
@@ -78,6 +77,6 @@ function LogSignInfo() {
       </body>
     </Container>
   );
-}
+};
 
 export default LogSignInfo;
