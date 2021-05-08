@@ -3,6 +3,7 @@ import { Button, Container, Form, Table } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
+import './Sign.css';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
