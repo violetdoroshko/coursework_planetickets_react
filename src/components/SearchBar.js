@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Container, Form, Table } from 'react-bootstrap';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
@@ -13,6 +15,7 @@ const SearchBar = () => {
     setDestination(temp);
   }
 
+  // todo: show tickets or error (nothing was found)
   function handleSearchClick() {
     console.log('Search.');
   }
@@ -50,7 +53,9 @@ const SearchBar = () => {
                   />
                 </th>
                 <th>
-                  <Button onClick={handleSwapClick}> Swap</Button>
+                  <Button onClick={handleSwapClick}>
+                    <FontAwesomeIcon icon={faExchangeAlt} />
+                  </Button>
                 </th>
                 <th>
                   <input
