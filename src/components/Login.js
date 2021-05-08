@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-const Sign = () => {
+const Login = () => {
   const [uname, handleNameChange] = useState('');
   const [psw, handlePasswordChange] = useState('');
 
@@ -13,7 +13,7 @@ const Sign = () => {
   return (
     <Container className="Sign in">
       <body>
-        <h2>Sign Page Form</h2>
+        <h2>Login Page Form</h2>
 
         <form>
           <div className="container">
@@ -37,7 +37,7 @@ const Sign = () => {
               value={psw}
               onChange={(event) => handlePasswordChange(event.target.value)}
             />
-            <Button onClick={signIn}>Sign in</Button>
+            <Button onClick={signIn}>Login in</Button>
           </div>
         </form>
       </body>
@@ -45,4 +45,4 @@ const Sign = () => {
   );
 };
 
-export default Sign;
+export default Login;

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import './index.css';
+// import './index.css';
 import Aviasales from './containers/Aviasales';
-import LogSignInfo from './components/LogSignInfo';
-import LogPersonalInfo from './components/LogPersonalInfo';
-import Sign from './components/Sign';
+import Register from './components/Register';
+import PersonalInfo from './components/PersonalInfo';
+import Login from './components/Login';
 import TicketCard from './components/TicketCard';
 
 //todo: fix /#/
@@ -13,9 +13,9 @@ const Main = () => (
   <HashRouter basename="/">
     <Switch>
       <Route path="/" exact component={Aviasales} />
-      <Route path="/1" exact component={LogSignInfo} />
-      <Route path="/2" exact component={LogPersonalInfo} />
-      <Route path="/3" exact component={Sign} />
+      <Route path="/register" exact component={Register} />
+      <Route path="/2" exact component={PersonalInfo} />
+      <Route path="/login" exact component={Login} />
       <Route path="/4" exact component={TicketCard} />
     </Switch>
   </HashRouter>

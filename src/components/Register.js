@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-const LogSignInfo = () => {
+const Register = () => {
   const [uname, handleNameChange] = useState('');
   const [psw, handlePasswordChange] = useState('');
   const [psw_repeat, handleRepeatPasswordChange] = useState('');
@@ -29,9 +29,6 @@ const LogSignInfo = () => {
   return (
     <Container className="Log in">
       <body>
-        <h2>Login Form</h2>
-        <h3>Personal Info</h3>
-
         <form>
           <div className="container">
             <label htmlFor="uname">
@@ -79,4 +76,4 @@ const LogSignInfo = () => {
   );
 };
 
-export default LogSignInfo;
+export default Register;

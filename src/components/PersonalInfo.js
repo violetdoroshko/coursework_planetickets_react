@@ -2,23 +2,20 @@ import React, { useState } from 'react';
 import './Sign.css';
 import { Button, Container } from 'react-bootstrap';
 
-const LogPersonalInfo = () => {
+const PersonalInfo = () => {
   const [firstName, handleFirstNameChange] = useState('');
   const [secondName, handleSecondNameChange] = useState('');
   const [birthDate, handleBirthDateChange] = useState('');
   const [passportNo, handlePassportNoChange] = useState('');
   const [identificationNo, handleIdentificationNoChange] = useState('');
 
-  function Next(e) {
-    //LogSignInfo(firstName, secondName, birthDate, passportNo, identificationNo);
+  function Next() {
+    //Register(firstName, secondName, birthDate, passportNo, identificationNo);
   }
 
   return (
     <Container className="Log in">
       <body>
-        <h2>Login Form</h2>
-        <h3>Personal Info</h3>
-
         <form>
           <div className="container">
             <label htmlFor="first name">
@@ -93,4 +90,4 @@ const LogPersonalInfo = () => {
   );
 };
 
-export default LogPersonalInfo;
+export default PersonalInfo;
