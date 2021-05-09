@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Form, Table } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -22,9 +22,9 @@ const SearchBar = () => {
   }
 
   return (
-    <Container className="Search">
+    <div className="container">
       <Form>
-        <Table>
+        <table width={'100%'}>
           <thead>
             <tr>
               <th>
@@ -46,6 +46,7 @@ const SearchBar = () => {
                 <input
                   type="text"
                   name="departure"
+                  placeholder={'Откуда'}
                   value={departure}
                   onChange={(event) => setDeparture(event.target.value)}
                 />
@@ -59,12 +60,19 @@ const SearchBar = () => {
                 <input
                   type="text"
                   name="destination"
+                  placeholder={'Куда'}
                   value={destination}
                   onChange={(event) => setDestination(event.target.value)}
                 />
               </th>
               <th>
-                <input type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)} />
+                <input
+                  type="date"
+                  name="date"
+                  placeholder={'Когда'}
+                  value={date}
+                  onChange={(event) => setDate(event.target.value)}
+                />
               </th>
               <th>
                 <Button onClick={handleSearchClick}>
@@ -73,9 +81,9 @@ const SearchBar = () => {
               </th>
             </tr>
           </tbody>
-        </Table>
+        </table>
       </Form>
-    </Container>
+    </div>
   );
 };
 
