@@ -1,28 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
-import { Button, Container, Navbar } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlane, faUser } from '@fortawesome/free-solid-svg-icons';
+import Header from '../components/Header';
+import { Container } from 'react-bootstrap';
 
 const Aviasales = () => {
-  let history = useHistory();
-
   return (
-    <>
-      <Navbar>
-        <Button variant="default" onClick={() => history.push('/')}>
-          <FontAwesomeIcon icon={faPlane} />
-        </Button>
-        <Button variant="default" onClick={() => history.push('/login')}>
-          <FontAwesomeIcon icon={faUser} />
-        </Button>
-      </Navbar>
-
-      <Container>
-        <SearchBar />
-      </Container>
-    </>
+    <Container>
+      <Header />
+      <SearchBar />
+    </Container>
   );
 };
 
