@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import './index.css';
 import Aviasales from './containers/Aviasales';
 import Login from './components/Login';
 import TicketCard from './components/TicketCard';
