@@ -195,7 +195,9 @@ const Register = () => {
               />
               <Form.Control
                 name="birth"
-                type="date"
+                type="text"
+                onFocus={(e) => (e.target.type = 'date')}
+                onBlur={(e) => (e.target.type = 'text')}
                 value={birth || ''}
                 placeholder="Дата рождения"
                 onChange={inputHandler}
@@ -219,7 +221,9 @@ const Register = () => {
               />
               <Form.Control
                 name="idDate"
-                type="date"
+                type="text"
+                onFocus={(e) => (e.target.type = 'date')}
+                onBlur={(e) => (e.target.type = 'text')}
                 value={idDate || ''}
                 placeholder="Дата действия"
                 onChange={inputHandler}

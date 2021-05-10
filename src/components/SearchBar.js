@@ -75,8 +75,9 @@ const SearchBar = () => {
             </th>
             <th>
               <Form.Control
-                required
-                type="date"
+                type="text"
+                onFocus={(e) => (e.target.type = 'date')}
+                onBlur={(e) => (e.target.type = 'text')}
                 placeholder="Когда"
                 name="date"
                 value={date}
