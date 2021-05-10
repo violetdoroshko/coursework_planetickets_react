@@ -68,13 +68,14 @@ const SearchBar = () => {
                 type="text"
                 placeholder="Куда"
                 name="destination"
-                value={departure}
+                value={destination}
                 style={{ height: '40px' }}
                 onChange={(event) => setDestination(event.target.value)}
               />
             </th>
             <th>
               <Form.Control
+                required
                 type="date"
                 placeholder="Когда"
                 name="date"
