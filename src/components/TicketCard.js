@@ -1,5 +1,5 @@
 import React from 'react';
-import './TicketCard.css';
+// import './TicketCard.css';
 
 const TicketCard = (
   departure,

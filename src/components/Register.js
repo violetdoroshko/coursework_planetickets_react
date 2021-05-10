@@ -1,38 +1,18 @@
-import React, { useState } from 'react';
-import './Sign.css';
+import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
-const Register = () => {
-  const [firstName, handleFirstNameChange] = useState('');
-  const [secondName, handleSecondNameChange] = useState('');
-  const [birthDate, handleBirthDateChange] = useState('');
-  const [citizenship, handleCitizenshipChange] = useState('');
-  const [passportNo, handlePassportNoChange] = useState('');
-  const [expirationDate, handleExpirationDateChange] = useState('');
-  const [uname, handleNameChange] = useState('');
-  const [psw, handlePasswordChange] = useState('');
-  const [psw_repeat, handleRepeatPasswordChange] = useState('');
+const register = () => {
+  // const [firstName, handleFirstNameChange] = useState('');
+  // const [secondName, handleSecondNameChange] = useState('');
+  // const [birthDate, handleBirthDateChange] = useState('');
+  // const [citizenship, handleCitizenshipChange] = useState('');
+  // const [passportNo, handlePassportNoChange] = useState('');
+  // const [expirationDate, handleExpirationDateChange] = useState('');
+  // const [uname, handleNameChange] = useState('');
+  // const [psw, handlePasswordChange] = useState('');
+  // const [psw_repeat, handleRepeatPasswordChange] = useState('');
 
-  function Register() {
-    alert(
-      'first name ' +
-        firstName +
-        'second name ' +
-        secondName +
-        'birth date ' +
-        birthDate +
-        'passport no ' +
-        passportNo +
-        'citizenship ' +
-        citizenship +
-        'login ' +
-        uname +
-        ' password ' +
-        psw +
-        'repeat pws' +
-        psw_repeat,
-    );
-  }
+  const register = () => {};
 
   return (
     <Container>
@@ -58,8 +38,8 @@ const Register = () => {
                 required="'Фамилия' обязательно для заполнения."
                 id="second name"
                 name="second name"
-                value={secondName}
-                onChange={(event) => handleSecondNameChange(event.target.value)}
+                // value={secondName}
+                // onChange={(event) => handleSecondNameChange(event.target.value)}
               />
               <input
                 type="text"
@@ -67,8 +47,8 @@ const Register = () => {
                 required="'Имя' обязательно для заполнения."
                 id="first name"
                 name="first name"
-                value={firstName}
-                onChange={(event) => handleFirstNameChange(event.target.value)}
+                // value={firstName}
+                // onChange={(event) => handleFirstNameChange(event.target.value)}
               />
 
               <input
@@ -76,8 +56,8 @@ const Register = () => {
                 placeholder="Дата рождения"
                 id="birth date"
                 name="birth date"
-                value={birthDate}
-                onChange={(event) => handleBirthDateChange(event.target.value)}
+                // value={birthDate}
+                // onChange={(event) => handleBirthDateChange(event.target.value)}
               />
             </div>
           </Row>
@@ -95,8 +75,8 @@ const Register = () => {
                 required="'Гражданство' обязательно для заполнения."
                 id="citizenship"
                 name="citizenship"
-                value={citizenship}
-                onChange={(event) => handleCitizenshipChange(event.target.value)}
+                // value={citizenship}
+                // onChange={(event) => handleCitizenshipChange(event.target.value)}
               />
               <input
                 type="text"
@@ -104,8 +84,8 @@ const Register = () => {
                 required="'Серия и номер паспорта' обязательно для заполнения."
                 id="passport no"
                 name="passport no"
-                value={passportNo}
-                onChange={(event) => handlePassportNoChange(event.target.value)}
+                // value={passportNo}
+                // onChange={(event) => handlePassportNoChange(event.target.value)}
               />
 
               <input
@@ -113,8 +93,8 @@ const Register = () => {
                 placeholder="Срок действия"
                 id="expiration date"
                 name="expiration date"
-                value={expirationDate}
-                onChange={(event) => handleExpirationDateChange(event.target.value)}
+                // value={expirationDate}
+                // onChange={(event) => handleExpirationDateChange(event.target.value)}
               />
             </div>
           </Row>
@@ -131,8 +111,8 @@ const Register = () => {
                 placeholder="Имя пользователя"
                 id="uname"
                 name="uname"
-                value={uname}
-                onChange={(event) => handleNameChange(event.target.value)}
+                // value={uname}
+                // onChange={(event) => handleNameChange(event.target.value)}
               />
 
               <input
@@ -140,8 +120,8 @@ const Register = () => {
                 placeholder="Пароль"
                 id="psw"
                 name="psw"
-                value={psw}
-                onChange={(event) => handlePasswordChange(event.target.value)}
+                // value={psw}
+                // onChange={(event) => handlePasswordChange(event.target.value)}
               />
 
               <input
@@ -149,17 +129,17 @@ const Register = () => {
                 placeholder="Подтвердить"
                 id="psw_repeat"
                 name="psw_repeat"
-                value={psw_repeat}
-                onChange={(event) => handleRepeatPasswordChange(event.target.value)}
+                // value={psw_repeat}
+                // onChange={(event) => handleRepeatPasswordChange(event.target.value)}
               />
             </div>
           </Row>
         </Col>
       </Form>
 
-      <Button onClick={Register}>Зарегистрироваться</Button>
+      <Button onClick={register}>Зарегистрироваться</Button>
     </Container>
   );
 };
 
-export default Register;
+export default register;

@@ -3,12 +3,15 @@ import { Button, Container, Form, Table } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
-import './Sign.css';
+// import { useHistory } from 'react-router-dom';
+// import './Sign.css';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
+
+  // let history = useHistory();
 
   function handleSwapClick() {
     const temp = departure;
@@ -16,10 +19,14 @@ const SearchBar = () => {
     setDestination(temp);
   }
 
+  const search = () => {
+    location.replace(window.location.href.replace('3000', '3004/tickets'));
+  };
+
   // todo: show tickets or error (nothing was found)
-  function handleSearchClick() {
-    console.log('Search.');
-  }
+  // function handleSearchClick() {
+  //   console.log('Search.');
+  // }
 
   return (
     <Container className="Search">
@@ -67,7 +74,7 @@ const SearchBar = () => {
                 <input type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)} />
               </th>
               <th>
-                <Button onClick={handleSearchClick}>
+                <Button onClick={search}>
                   <FontAwesomeIcon icon={faSearch} />
                 </Button>
               </th>

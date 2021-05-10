@@ -1,22 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Switch } from 'react-router-dom';
-// import './index.css';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import './index.css';
 import Aviasales from './containers/Aviasales';
-import Register from './components/Register';
+import register from './components/Register';
 import Login from './components/Login';
 import TicketCard from './components/TicketCard';
+import { TICKETS_URL } from './utils/consts';
 
-//todo: fix /#/
 const Main = () => (
-  <HashRouter basename="/">
+  <BrowserRouter basename="/">
     <Switch>
       <Route path="/" exact component={Aviasales} />
-      <Route path="/register" exact component={Register} />
+      <Route path="/register" exact component={register} />
       <Route path="/login" exact component={Login} />
       <Route path="/4" exact component={TicketCard} />
+      <Redirect from="/search" to={TICKETS_URL} />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 const domContainer = document.getElementById('root');

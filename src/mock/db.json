@@ -1,0 +1,22 @@
+{
+  "tickets": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "users": [
+    {
+      "email": "em@gmail.com",
+      "password": "$2a$10$6ZIcJAyvif2tRkCJuNYE..XXT2OtQYh4fOBhqfRs5WwRqdolbZrcC",
+      "id": 1
+    },
+    {
+      "email": "123@gmail.com",
+      "password": "$2a$10$g9FoHsYbPpl.oT7LbE710.lRCOutsK5/ptKFEHR1ZM6jGjyBXs3EK",
+      "firstName": "VLAD",
+      "id": 2
+    }
+  ]
+}
