@@ -6,6 +6,7 @@ import Login from './components/Login';
 import TicketCard from './components/TicketCard';
 import { TICKETS_URL } from './utils/consts';
 import Register from './components/Register';
+import './index.css';
 
 const Main = () => (
   <BrowserRouter basename="/">

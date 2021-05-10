@@ -165,13 +165,10 @@ const Register = () => {
       <Header />
       <Container className="Register">
         <h2>Регистрация</h2>
-        <br />
         <Form className="form" onSubmit={handleSubmit}>
           {/* todo: do form control*/}
-          <br />
           <Form className="unit-form">
             <h3>Личные данные</h3>
-            <br />
             <Form className="form-inline">
               <Form.Group>
                 <div className="form-inline" onChange={handleGender}>
@@ -204,12 +201,10 @@ const Register = () => {
                 onChange={inputHandler}
               />
             </Form>
-            <br />
           </Form>
           <br />
           <Form className="unit-form">
             <h3>Паспортные данные</h3>
-            <br />
             <Form className="form-inline">
               <Form.Control as="select" name="checkingPassportValue" maxLength="100">
                 <option key="blankChoice" hidden value />
@@ -230,12 +225,10 @@ const Register = () => {
                 onChange={inputHandler}
               />
             </Form>
-            <br />
           </Form>
           <br />
           <Form className="unit-form">
             <h3>Контактная информация</h3>
-            <br />
             <Form className="form-inline">
               <Form.Control as="select" name="checkingValue" maxLength="100">
                 <option key="blankChoice" hidden value />
@@ -249,13 +242,10 @@ const Register = () => {
                 onChange={inputHandler}
               />
             </Form>
-            <br />
           </Form>
           <br />
-
           <Form className="unit-form">
             <h3>Пользовательские данные</h3>
-            <br />
             <Form.Control name="email" value={email || ''} placeholder="Email" onChange={inputHandler} />
 
             <Form.Control name="pass" value={password || ''} placeholder="Пароль" onChange={inputHandler} />
@@ -266,10 +256,9 @@ const Register = () => {
               placeholder="Подтвердить пароль"
               onChange={inputHandler}
             />
-            <br />
           </Form>
           <br />
-          <Form className="unit-form">
+          <Form className="button-form">
             <Button variant="primary" type="submit">
               Зарегистрироваться
             </Button>

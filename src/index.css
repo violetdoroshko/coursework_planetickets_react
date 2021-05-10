@@ -1,4 +1,4 @@
-@media all and (min-width: 200px) {
+@media all and (min-width: 300px) {
     /*Search*/
     .Search {
         padding: 160px 0;
@@ -14,6 +14,7 @@
         width: 350px;
         background-color: rgba(210, 210, 229, 0.16);
         border-radius: 10px;
+        padding: 20px;
     }
 
     .Login button {
@@ -43,9 +44,13 @@
         text-align: center;
     }
 
-    .Register .form, .unit-form {
+    .Register .form, .unit-form, .button-form {
         margin: 0 auto;
         width: 80%;
+        padding: 20px;
+    }
+
+    .Register .form, .unit-form {
         background-color: rgba(210, 210, 229, 0.16);
         border-radius: 10px;
     }
