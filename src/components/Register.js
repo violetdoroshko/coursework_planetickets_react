@@ -1,5 +1,6 @@
 import React from 'react';
-import { ButtonGroup, Col, Container, Form, Row, Button } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
+import Header from './Header';
 
 const Register = () => {
   const [birth, setBirth] = React.useState('');
@@ -160,36 +161,38 @@ const Register = () => {
     //   </Form>
     //
     // </Container>
-    <Container>
-      <h1>Регистрация</h1>
-      <Form className="form-horizontal" onSubmit={handleSubmit}>
-        <Col>
-          <h3>Личные данные</h3>
-          <Row>
-            {/* todo: do form control*/}
-            <Form.Group as={Col}>
-              <Form.Label column md="3">
-                Пол
-              </Form.Label>
-              <ButtonGroup toggle vertical name="gender" onChange={handleGender}>
-                <Form.Control value="female" type="radio" label="Female" />
-                <Form.Control value="male" type="radio" label="Male" />
-              </ButtonGroup>
-            </Form.Group>
-          </Row>
-          <Row>
-            <Col md="9" className="pl-0">
+    <>
+      <Header />
+      <Container className="Register">
+        <h2>Регистрация</h2>
+        <br />
+        <Form className="form" onSubmit={handleSubmit}>
+          {/* todo: do form control*/}
+          <br />
+          <Form className="unit-form">
+            <h3>Личные данные</h3>
+            <br />
+            <Form className="form-inline">
+              <Form.Group>
+                <div className="form-inline" onChange={handleGender}>
+                  <Form.Check inline label="Женщина" name="group1" type="radio" />
+                  <Form.Check inline label="Мужчина" name="group1" type="radio" />
+                </div>
+              </Form.Group>
+            </Form>
+
+            <Form className="form-inline">
               <Form.Control
                 name="lastName"
                 value={lastName || ''}
-                placeholder="Last name"
+                placeholder="Фамилия"
                 disabled={gender}
                 onChange={inputHandler}
               />
               <Form.Control
                 name="firstName"
                 value={firstName || ''}
-                placeholder="First name"
+                placeholder="Имя"
                 disabled={gender}
                 onChange={inputHandler}
               />
@@ -197,78 +200,83 @@ const Register = () => {
                 name="birth"
                 type="date"
                 value={birth || ''}
-                placeholder="Birth date"
+                placeholder="Дата рождения"
                 onChange={inputHandler}
               />
-            </Col>
-          </Row>
-        </Col>
+            </Form>
+            <br />
+          </Form>
+          <br />
+          <Form className="unit-form">
+            <h3>Паспортные данные</h3>
+            <br />
+            <Form className="form-inline">
+              <Form.Control as="select" name="checkingPassportValue" maxLength="100">
+                <option key="blankChoice" hidden value />
+                <option value="0">Belarus</option>
+              </Form.Control>
+              <Form.Control
+                name="id"
+                value={id || ''}
+                placeholder="Серия и номер паспорта"
+                disabled={gender}
+                onChange={inputHandler}
+              />
+              <Form.Control
+                name="idDate"
+                type="date"
+                value={idDate || ''}
+                placeholder="Дата действия"
+                onChange={inputHandler}
+              />
+            </Form>
+            <br />
+          </Form>
+          <br />
+          <Form className="unit-form">
+            <h3>Контактная информация</h3>
+            <br />
+            <Form className="form-inline">
+              <Form.Control as="select" name="checkingValue" maxLength="100">
+                <option key="blankChoice" hidden value />
+                <option value="0">+375(Belarus)</option>
+              </Form.Control>
+              <Form.Control
+                name="phoneNumber"
+                value={phoneNumber || ''}
+                placeholder="Номер телефона"
+                disabled={gender}
+                onChange={inputHandler}
+              />
+            </Form>
+            <br />
+          </Form>
+          <br />
 
-        <Form.Group as={Row}>
-          <h3>Паспортные данные</h3>
-          <Col>
-            <Form.Control as="select" name="checkingValue" maxLength="100">
-              <option key="blankChoice" hidden value />
-              <option value="0">Belarus</option>
-            </Form.Control>
-            <Form.Control
-              name="id"
-              value={id || ''}
-              placeholder="Серия и номер паспорта"
-              disabled={gender}
-              onChange={inputHandler}
-            />
-            <Form.Control
-              name="idDate"
-              type="date"
-              value={idDate || ''}
-              placeholder="Дата действия"
-              onChange={inputHandler}
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row}>
-          <h3>Контактная информация</h3>
-          <Col>
-            <Form.Control as="select" name="checkingValue" maxLength="100">
-              <option key="blankChoice" hidden value />
-              <option value="0">+375(Belarus)</option>
-            </Form.Control>
-            <Form.Control
-              name="phoneNumber"
-              value={phoneNumber || ''}
-              placeholder="Номер"
-              disabled={gender}
-              onChange={inputHandler}
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group>
-          <h3>Пользовательские данные</h3>
-          <Col>
+          <Form className="unit-form">
+            <h3>Пользовательские данные</h3>
+            <br />
             <Form.Control name="email" value={email || ''} placeholder="Email" onChange={inputHandler} />
-          </Col>
-          <Col>
-            <Form.Control name="pass" value={password || ''} placeholder="Password" onChange={inputHandler} />
-          </Col>
-          <Col>
+
+            <Form.Control name="pass" value={password || ''} placeholder="Пароль" onChange={inputHandler} />
+
             <Form.Control
               name="rpass"
               value={repeatedPass || ''}
-              placeholder="Repeat passwrod"
+              placeholder="Подтвердить пароль"
               onChange={inputHandler}
             />
-          </Col>
-        </Form.Group>
-        <Form.Group>
-          <Button variant="primary" type="submit">
-            Зарегистрироваться
-          </Button>
-        </Form.Group>
-      </Form>
-    </Container>
+            <br />
+          </Form>
+          <br />
+          <Form className="unit-form">
+            <Button variant="primary" type="submit">
+              Зарегистрироваться
+            </Button>
+          </Form>
+        </Form>
+      </Container>
+    </>
   );
 };
 
