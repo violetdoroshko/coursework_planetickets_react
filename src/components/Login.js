@@ -22,7 +22,6 @@ const Login = () => {
       <Header />
       <Container className="Login">
         <h2>Вход в личный кабинет</h2>
-        <br />
         <Container className="Form">
           <Form>
             <Form.Group size="lg" controlId="formBasicEmail">

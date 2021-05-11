@@ -33,8 +33,32 @@ const Register = () => {
     setRepeatedPass('');
   };
 
-  const inputHandler = (e) => {
+  const inputLastNameHandler = (e) => {
     setLastName(e.target);
+  };
+  const inputFirstNameHandler = (e) => {
+    setFirstName(e.target);
+  };
+  const inputBirthDateHandler = (e) => {
+    setBirth(e.target);
+  };
+  const inputIdHandler = (e) => {
+    setId(e.target);
+  };
+  const inputIdDateHandler = (e) => {
+    setIdDate(e.target);
+  };
+  const inputNumberHandler = (e) => {
+    setPhoneNumber(e.target);
+  };
+  const inputEmailHandler = (e) => {
+    setEmail(e.target);
+  };
+  const inputPasswordHandler = (e) => {
+    setPassword(e.target);
+  };
+  const inputRepeatPasswordHandler = (e) => {
+    setRepeatedPass(e.target);
   };
 
   return (
@@ -184,14 +208,14 @@ const Register = () => {
                 value={lastName || ''}
                 placeholder="Фамилия"
                 disabled={gender}
-                onChange={inputHandler}
+                onChange={inputLastNameHandler}
               />
               <Form.Control
                 name="firstName"
                 value={firstName || ''}
                 placeholder="Имя"
                 disabled={gender}
-                onChange={inputHandler}
+                onChange={inputFirstNameHandler}
               />
               <Form.Control
                 name="birth"
@@ -200,7 +224,7 @@ const Register = () => {
                 onBlur={(e) => (e.target.type = 'text')}
                 value={birth || ''}
                 placeholder="Дата рождения"
-                onChange={inputHandler}
+                onChange={inputBirthDateHandler}
               />
             </Form>
           </Form>
@@ -217,7 +241,7 @@ const Register = () => {
                 value={id || ''}
                 placeholder="Серия и номер паспорта"
                 disabled={gender}
-                onChange={inputHandler}
+                onChange={inputIdHandler}
               />
               <Form.Control
                 name="idDate"
@@ -226,7 +250,7 @@ const Register = () => {
                 onBlur={(e) => (e.target.type = 'text')}
                 value={idDate || ''}
                 placeholder="Дата действия"
-                onChange={inputHandler}
+                onChange={inputIdDateHandler}
               />
             </Form>
           </Form>
@@ -243,22 +267,22 @@ const Register = () => {
                 value={phoneNumber || ''}
                 placeholder="Номер телефона"
                 disabled={gender}
-                onChange={inputHandler}
+                onChange={inputNumberHandler}
               />
             </Form>
           </Form>
           <br />
           <Form className="unit-form">
             <h3>Пользовательские данные</h3>
-            <Form.Control name="email" value={email || ''} placeholder="Email" onChange={inputHandler} />
+            <Form.Control name="email" value={email || ''} placeholder="Email" onChange={inputEmailHandler} />
 
-            <Form.Control name="pass" value={password || ''} placeholder="Пароль" onChange={inputHandler} />
+            <Form.Control name="pass" value={password || ''} placeholder="Пароль" onChange={inputPasswordHandler} />
 
             <Form.Control
               name="rpass"
               value={repeatedPass || ''}
               placeholder="Подтвердить пароль"
-              onChange={inputHandler}
+              onChange={inputRepeatPasswordHandler}
             />
           </Form>
           <br />
