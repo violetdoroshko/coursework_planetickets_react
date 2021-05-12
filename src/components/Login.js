@@ -10,13 +10,16 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-const schema = yup.object().shape({});
+const schema = yup.object().shape({
+  email: yup.string().required('Login is required'),
+  password: yup.string().required('Password is required'),
+});
 
 const Login = () => {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -24,6 +27,7 @@ const Login = () => {
   let history = useHistory();
 
   const login = (user) => {
+    //todo: if status ok then user's page
     loginUser(user).then((response) => console.log(response));
   };
 
@@ -36,21 +40,14 @@ const Login = () => {
           <Form>
             <Form.Group size="lg" controlId="formBasicEmail">
               <Form.Label>Логин</Form.Label>
-              <Form.Control
-                autoFocus
-                type="text"
-                placeholder="Имя пользователя"
-                {...register('email', { required: true, maxLength: 20 })}
-              />
+              <Form.Control autoFocus type="text" placeholder="Имя пользователя" {...register('email')} />
+              <Form.Control.Feedback type={'invalid'}>{errors.email?.message}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group size="lg" controlId="formBasicPassword">
               <Form.Label>Пароль</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Пароль"
-                {...register('password', { required: true, maxLength: 20 })}
-              />
+              <Form.Control type="password" placeholder="Пароль" {...register('password')} />
+              <Form.Control.Feedback type={'invalid'}>{errors.password?.message}</Form.Control.Feedback>
             </Form.Group>
             <Button variant="primary" onClick={handleSubmit(login)}>
               Войти
