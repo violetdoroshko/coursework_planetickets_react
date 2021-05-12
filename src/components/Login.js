@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Container, Form, NavLink } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import Header from './Header';
 import '../index.css';
+import { loginUser } from '../utils/api/TicketApi';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({});
 
 const Login = () => {
-  const [uname, handleNameChange] = useState('');
-  const [psw, handlePasswordChange] = useState('');
+  const {
+    register,
+    handleSubmit,
+    // formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   let history = useHistory();
 
-  //todo: send post to LOGIN
-  const login = () => {
-    alert('login ' + uname + ' password ' + psw);
+  const login = (user) => {
+    loginUser(user).then((response) => console.log(response));
   };
 
   return (
@@ -30,9 +40,7 @@ const Login = () => {
                 autoFocus
                 type="text"
                 placeholder="Имя пользователя"
-                name="uname"
-                value={uname}
-                onChange={(event) => handleNameChange(event.target.value)}
+                {...register('email', { required: true, maxLength: 20 })}
               />
             </Form.Group>
 
@@ -41,12 +49,10 @@ const Login = () => {
               <Form.Control
                 type="password"
                 placeholder="Пароль"
-                name="psw"
-                value={psw}
-                onChange={(event) => handlePasswordChange(event.target.value)}
+                {...register('password', { required: true, maxLength: 20 })}
               />
             </Form.Group>
-            <Button variant="primary" onClick={login}>
+            <Button variant="primary" onClick={handleSubmit(login)}>
               Войти
             </Button>
             <br />
