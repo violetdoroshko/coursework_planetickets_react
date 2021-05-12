@@ -10,7 +10,7 @@
       "destination_time": "19:30",
       "cost": "145"
     },
-   {
+    {
       "id": 2,
       "departure": "Moscow",
       "departure_date": "25-05-2021",
@@ -20,7 +20,7 @@
       "destination_time": "20:00",
       "cost": "165"
     },
-   {
+    {
       "id": 3,
       "departure": "Minsk",
       "departure_date": "29-05-2021",
@@ -30,7 +30,7 @@
       "destination_time": "03:30",
       "cost": "200"
     },
-   {
+    {
       "id": 4,
       "departure": "Warsaw",
       "departure_date": "30-05-2021",
@@ -40,7 +40,7 @@
       "destination_time": "19:30",
       "cost": "147"
     },
-   {
+    {
       "id": 5,
       "departure": "Warsaw",
       "departure_date": "23-05-2021",
@@ -50,7 +50,7 @@
       "destination_time": "23:30",
       "cost": "354"
     },
-   {
+    {
       "id": 6,
       "departure": "Moscow",
       "departure_date": "29-05-2021",
@@ -60,7 +60,7 @@
       "destination_time": "19:30",
       "cost": "297"
     },
-   {
+    {
       "id": 7,
       "departure": "Minsk",
       "departure_date": "22-05-2021",
@@ -70,7 +70,7 @@
       "destination_time": "19:30",
       "cost": "197"
     },
-   {
+    {
       "id": 8,
       "departure": "Riga",
       "departure_date": "22-05-2021",
@@ -80,7 +80,7 @@
       "destination_time": "19:30",
       "cost": "298"
     },
-   {
+    {
       "id": 9,
       "departure": "Kiev",
       "departure_date": "25-05-2021",
@@ -90,7 +90,7 @@
       "destination_time": "23:30",
       "cost": "100"
     },
-   {
+    {
       "id": 10,
       "departure": "Riga",
       "departure_date": "29-05-2021",
@@ -112,6 +112,17 @@
       "password": "$2a$10$g9FoHsYbPpl.oT7LbE710.lRCOutsK5/ptKFEHR1ZM6jGjyBXs3EK",
       "firstName": "VLAD",
       "id": 2
+    },
+    {
+      "email": "1@gmail.com",
+      "password": "$2a$10$YF8d/1LfTZKghLs5AQ7i2eDOE9ryvxWQ6e8q3UpeEq.uUdnSlp/0e",
+      "lastName": "1",
+      "firstName": "1",
+      "idDate": "",
+      "passport": "1",
+      "phoneNumber": "",
+      "repeatedPass": "",
+      "id": 3
     }
   ]
 }

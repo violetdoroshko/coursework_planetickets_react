@@ -1,145 +1,128 @@
 import React from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
+import Header from './Header';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { registerUser } from '../utils/api/TicketApi';
 
-const register = () => {
-  // const [firstName, handleFirstNameChange] = useState('');
-  // const [secondName, handleSecondNameChange] = useState('');
-  // const [birthDate, handleBirthDateChange] = useState('');
-  // const [citizenship, handleCitizenshipChange] = useState('');
-  // const [passportNo, handlePassportNoChange] = useState('');
-  // const [expirationDate, handleExpirationDateChange] = useState('');
-  // const [uname, handleNameChange] = useState('');
-  // const [psw, handlePasswordChange] = useState('');
-  // const [psw_repeat, handleRepeatPasswordChange] = useState('');
+const schema = yup.object().shape({
+  firstName: yup
+    .string()
+    .trim()
+    .required('First name is required')
+    .max(20, 'First name is too long, maximum {max} characters can be specified.'),
+  lastName: yup
+    .string()
+    .trim()
+    .required('Last name is required')
+    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
+  passport: yup
+    .string()
+    .trim()
+    .required('passport is required')
+    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
+  phoneNumber: yup.string().trim().required('phoneNumber is required').min(9, 'min').max(9, 'max'),
+  email: yup
+    .string()
+    .trim()
+    .required('Last name is required')
+    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
+  password: yup
+    .string()
+    .trim()
+    .required('password is required')
+    .min(7, 'Last name is too long, minimum {min} characters can be specified.')
+    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
+  repeatedPass: yup.string().trim().required('Repeat password'),
+});
 
-  const register = () => {};
+const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (newUser) => registerUser(newUser);
+
+  const [gender, setGender] = React.useState(true);
+
+  //todo: change gender only
+  const handleGender = () => {
+    setGender(!gender);
+  };
 
   return (
-    <Container>
-      <h2>Регистрация</h2>
-      <Form className="form-horizontal">
-        <h3>Личные данные</h3>
-        <Col>
-          <Row>
-            <div className="gender">
-              <input className="form-check-input" type="radio" name="Gender" id="Gender_F" />
-              <label className="form-check-label" htmlFor="Gender_F">
-                Женщина
-              </label>
-              <input className="form-check-input" type="radio" name="Gender" id="Gender_M" checked />
-              <label className="form-check-label" htmlFor="Gender_M">
-                Мужчина
-              </label>
+    <>
+      <Header />
+      <Container className="Register">
+        <h2>Регистрация</h2>
+        <Form className="form" onSubmit={handleSubmit(onSubmit)}>
+          {/* todo: gender*/}
+          <Form.Group className="form">
+            <h5>Личные данные</h5>
+
+            <div className="form-inline" onChange={handleGender}>
+              <Form.Check inline label="Женщина" type="radio" />
+              <Form.Check inline label="Мужчина" type="radio" />
             </div>
-            <div className="personal-info">
-              <input
-                type="text"
-                placeholder="Фамилия"
-                required="'Фамилия' обязательно для заполнения."
-                id="second name"
-                name="second name"
-                // value={secondName}
-                // onChange={(event) => handleSecondNameChange(event.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Имя"
-                required="'Имя' обязательно для заполнения."
-                id="first name"
-                name="first name"
-                // value={firstName}
-                // onChange={(event) => handleFirstNameChange(event.target.value)}
-              />
 
-              <input
-                type="date"
-                placeholder="Дата рождения"
-                id="birth date"
-                name="birth date"
-                // value={birthDate}
-                // onChange={(event) => handleBirthDateChange(event.target.value)}
-              />
-            </div>
-          </Row>
-        </Col>
-      </Form>
-      <Form>
-        <Col>
-          <Row>
-            <h3> Паспортные данные</h3>
+            <Form.Control {...register('lastName')} placeholder="Фамилия" isInvalid={errors.lastName} />
+            <Form.Control.Feedback type={'invalid'}>{errors.lastName?.message}</Form.Control.Feedback>
+            <Form.Control {...register('firstName')} placeholder="Имя" isInvalid={errors.firstName} />
+            <Form.Control.Feedback type={'invalid'}>{errors.firstName?.message}</Form.Control.Feedback>
 
-            <div className="passport-info">
-              <input
-                type="text"
-                placeholder="Гражданство"
-                required="'Гражданство' обязательно для заполнения."
-                id="citizenship"
-                name="citizenship"
-                // value={citizenship}
-                // onChange={(event) => handleCitizenshipChange(event.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Серия и номер паспорта"
-                required="'Серия и номер паспорта' обязательно для заполнения."
-                id="passport no"
-                name="passport no"
-                // value={passportNo}
-                // onChange={(event) => handlePassportNoChange(event.target.value)}
-              />
+            <Form.Control name="birth" type="date" {...register('idDate')} />
+          </Form.Group>
 
-              <input
-                type="date"
-                placeholder="Срок действия"
-                id="expiration date"
-                name="expiration date"
-                // value={expirationDate}
-                // onChange={(event) => handleExpirationDateChange(event.target.value)}
-              />
-            </div>
-          </Row>
-        </Col>
-      </Form>
-      <Form>
-        <Col>
-          <Row>
-            <h3>Данные для входа</h3>
+          <br />
 
-            <div className="sign-in-info">
-              <input
-                type="text"
-                placeholder="Имя пользователя"
-                id="uname"
-                name="uname"
-                // value={uname}
-                // onChange={(event) => handleNameChange(event.target.value)}
-              />
+          <Form.Group className="form">
+            <h5>Паспортные данные</h5>
+            <Form.Control as="select" name="checkingPassportValue">
+              <option key="blankChoice" hidden value />
+              <option value="0">Belarus</option>
+            </Form.Control>
+            <Form.Control {...register('passport')} placeholder="Серия и номер паспорта" />
+            <Form.Control.Feedback type={'invalid'}>{errors.passport?.message}</Form.Control.Feedback>
+            <Form.Control name="idDate" type="date" {...register('idDate')} />
+          </Form.Group>
 
-              <input
-                type="password"
-                placeholder="Пароль"
-                id="psw"
-                name="psw"
-                // value={psw}
-                // onChange={(event) => handlePasswordChange(event.target.value)}
-              />
+          <br />
 
-              <input
-                type="password"
-                placeholder="Подтвердить"
-                id="psw_repeat"
-                name="psw_repeat"
-                // value={psw_repeat}
-                // onChange={(event) => handleRepeatPasswordChange(event.target.value)}
-              />
-            </div>
-          </Row>
-        </Col>
-      </Form>
+          <Form.Group className="form">
+            <h5>Контактная информация</h5>
+            <Form.Control as="select" name="checkingValue">
+              <option key="blankChoice" hidden value />
+              <option value="0">+375(Belarus)</option>
+            </Form.Control>
+            <Form.Control {...register('phoneNumber')} placeholder="Номер телефона" />
+            <Form.Control.Feedback type={'invalid'}>{errors.phoneNumber?.message}</Form.Control.Feedback>
+          </Form.Group>
 
-      <Button onClick={register}>Зарегистрироваться</Button>
-    </Container>
+          <br />
+
+          <Form.Group className="form">
+            <h5>Пользовательские данные</h5>
+            <Form.Control {...register('email')} placeholder="Email" />
+            <Form.Control.Feedback type={'invalid'}>{errors.email?.message}</Form.Control.Feedback>
+            <Form.Control {...register('password')} placeholder="Пароль" />
+            <Form.Control.Feedback type={'invalid'}>{errors.password?.message}</Form.Control.Feedback>
+            <Form.Control {...register('repeatedPass')} placeholder="Повторите пароль" />
+            <Form.Control.Feedback type={'invalid'}>{errors.repeatedPass?.message}</Form.Control.Feedback>
+
+            <br />
+
+            <Button variant="primary" type="submit">
+              Зарегистрироваться
+            </Button>
+          </Form.Group>
+        </Form>
+      </Container>
+    </>
   );
 };
 
-export default register;
+export default Register;

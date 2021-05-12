@@ -9,13 +9,13 @@ const Header = () => {
 
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="primary" variant="dark" expand="lg" fixed="top">
         <Navbar.Brand href={'/'}>
-          <FontAwesomeIcon icon={faPlane} color={'blue'} /> AviaSales
+          <FontAwesomeIcon icon={faPlane} color={'white'} /> AviaSales
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto" />
-          <Button variant="outline-primary" onClick={() => history.push('/login')}>
+          <Button variant="primary" onClick={() => history.push('/login')}>
             <FontAwesomeIcon icon={faUserCircle} />
           </Button>
         </Navbar.Collapse>

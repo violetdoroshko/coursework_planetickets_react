@@ -54,11 +54,12 @@ const SearchBar = () => {
                 placeholder="Откуда"
                 name="departure"
                 value={departure}
+                style={{ height: '40px' }}
                 onChange={(event) => setDeparture(event.target.value)}
               />
             </th>
             <th>
-              <Button onClick={handleSwapClick}>
+              <Button onClick={handleSwapClick} style={{ height: '40px', width: '100%' }}>
                 <FontAwesomeIcon icon={faExchangeAlt} />
               </Button>
             </th>
@@ -67,13 +68,16 @@ const SearchBar = () => {
                 type="text"
                 placeholder="Куда"
                 name="destination"
-                value={departure}
+                value={destination}
+                style={{ height: '40px' }}
                 onChange={(event) => setDestination(event.target.value)}
               />
             </th>
             <th>
               <Form.Control
-                type="date"
+                type="text"
+                onFocus={(e) => (e.target.type = 'date')}
+                onBlur={(e) => (e.target.type = 'text')}
                 placeholder="Когда"
                 name="date"
                 value={date}
@@ -81,7 +85,7 @@ const SearchBar = () => {
               />
             </th>
             <th>
-              <Button onClick={search}>
+              <Button onClick={search} style={{ height: '40px', width: '100%' }}>
                 <FontAwesomeIcon icon={faSearch} />
               </Button>
             </th>

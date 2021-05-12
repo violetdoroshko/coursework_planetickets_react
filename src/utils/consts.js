@@ -1,4 +1,4 @@
-export const API_HOST = 'http://localhost:3004/';
+export const API_HOST = 'http://localhost:3004';
 
 export const REGISTER_URL = API_HOST + '/register';
 export const LOGIN_URL = API_HOST + '/login';

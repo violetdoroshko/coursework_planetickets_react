@@ -1,0 +1,61 @@
+@media all and (min-width: 300px) {
+    /*Search*/
+    .Search {
+        padding: 160px 0;
+    }
+
+    /*Login*/
+    .Login {
+        padding: 160px 0;
+    }
+
+    .Login form {
+        margin: 0 auto;
+        width: 350px;
+        background-color: rgba(210, 210, 229, 0.16);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .Login button {
+        width: 100%;
+    }
+
+    .Login h2 {
+        text-align: center;
+    }
+
+    .Login .Form {
+
+    }
+
+    .Login a {
+        text-align: center;
+        padding-top: 10px;
+        margin: 0;
+    }
+
+    /*Register*/
+    .Register {
+        padding: 100px 0;
+    }
+
+    .Register h2 {
+        text-align: center;
+    }
+
+    .Register .form, .unit-form, .button-form {
+        margin: 0 auto;
+        width: 80%;
+        padding: 20px;
+    }
+
+    .Register .form, .unit-form {
+        background-color: rgba(210, 210, 229, 0.16);
+        border-radius: 10px;
+    }
+
+    .Register button {
+        width: 100%;
+    }
+}

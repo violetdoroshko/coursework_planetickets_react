@@ -5,10 +5,12 @@ import { Container } from 'react-bootstrap';
 
 const Aviasales = () => {
   return (
-    <Container>
+    <>
       <Header />
-      <SearchBar />
-    </Container>
+      <Container className="Search">
+        <SearchBar />
+      </Container>
+    </>
   );
 };
 
