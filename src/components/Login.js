@@ -11,8 +11,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  email: yup.string().required('Login is required'),
-  password: yup.string().required('Password is required'),
+  email: yup
+    .string()
+    .trim()
+    .required("'Email' обязательно для заполнения.")
+    .max(20, 'Email слишком длинный, максимум {max} символов.'),
+  password: yup
+    .string()
+    .trim()
+    .required("'Пароль' обязательно для заполнения.")
+    .min(7, 'Пароль слишком короткий, минимум {min} символов.')
+    .max(20, 'Пароль слишком длинный, максимум {max} символов.'),
 });
 
 const Login = () => {
@@ -39,8 +48,8 @@ const Login = () => {
         <Container className="Form">
           <Form>
             <Form.Group size="lg" controlId="formBasicEmail">
-              <Form.Label>Логин</Form.Label>
-              <Form.Control autoFocus type="text" placeholder="Имя пользователя" {...register('email')} />
+              <Form.Label>Email</Form.Label>
+              <Form.Control autoFocus type="email" placeholder="Email" {...register('email')} />
               <Form.Control.Feedback type={'invalid'}>{errors.email?.message}</Form.Control.Feedback>
             </Form.Group>
 
