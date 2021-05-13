@@ -58,4 +58,30 @@
     .Register button {
         width: 100%;
     }
+
+    /*Account*/
+    .Account {
+        padding: 100px 0;
+    }
+
+    .Account h2, h3 {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .Account form {
+        margin: 0 auto;
+        width: 80%;
+        background-color: rgba(210, 210, 229, 0.16);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .Account button {
+        float: right;
+    }
+
+    .Account .edit {
+        padding-top: 40%;
+    }
 }
