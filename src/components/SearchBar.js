@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { getTickets } from '../utils/api/TicketApi';
 import TicketCard from '../components/TicketCard';
+import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
@@ -13,7 +14,7 @@ const SearchBar = () => {
 
   const [tickets, setTickets] = useState(null);
 
-  // let history = useHistory();
+  let history = useHistory();
 
   function handleSwapClick() {
     const temp = departure;
@@ -99,6 +100,7 @@ const SearchBar = () => {
           <thead>
             <tr>
               <th />
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -115,6 +117,9 @@ const SearchBar = () => {
                       destination_time={ticket.destination_time}
                       cost={ticket.cost}
                     />
+                  </td>
+                  <td>
+                    <Button onClick={() => history.push('/account')}>Купить</Button>
                   </td>
                 </tr>
               );
