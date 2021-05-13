@@ -112,9 +112,8 @@ const Register = () => {
             <Form.Control.Feedback type={'invalid'}>{errors.password?.message}</Form.Control.Feedback>
             <Form.Control {...register('repeatedPass')} placeholder="Повторите пароль" />
             <Form.Control.Feedback type={'invalid'}>{errors.repeatedPass?.message}</Form.Control.Feedback>
-
-            <br />
-
+          </Form.Group>
+          <Form.Group className="button-form">
             <Button variant="primary" type="submit">
               Зарегистрироваться
             </Button>
