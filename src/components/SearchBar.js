@@ -4,13 +4,14 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { getTickets } from '../utils/api/TicketApi';
+import TicketCard from '../components/TicketCard';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
 
-  const [tickets, setTickets] = useState([]);
+  const [tickets, setTickets] = useState(null);
 
   // let history = useHistory();
 
@@ -92,6 +93,35 @@ const SearchBar = () => {
           </tr>
         </tbody>
       </Table>
+
+      {tickets ? (
+        <Table>
+          <thead>
+            <tr>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {tickets.map((ticket) => {
+              return (
+                <tr key={ticket.id}>
+                  <td>
+                    <TicketCard
+                      departure={ticket.departure}
+                      departure_date={ticket.departure_date}
+                      departure_time={ticket.departure_time}
+                      destination={ticket.destination}
+                      destination_date={ticket.destination_date}
+                      destination_time={ticket.destination_time}
+                      cost={ticket.cost}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      ) : null}
     </Form>
   );
 };
