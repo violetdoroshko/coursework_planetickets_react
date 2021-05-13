@@ -1,4 +1,4 @@
-import { LOGIN_URL, REGISTER_URL } from '../consts';
+import { LOGIN_URL, REGISTER_URL, TICKETS_URL } from '../consts';
 
 export async function registerUser(newUser) {
   console.log(newUser);
@@ -21,5 +21,14 @@ export async function loginUser(user) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
+  });
+}
+
+export async function getTickets() {
+  return await fetch(TICKETS_URL, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 }

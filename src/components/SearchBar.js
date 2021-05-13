@@ -3,13 +3,14 @@ import { Button, Form, Table } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
-// import { useHistory } from 'react-router-dom';
-// import './Sign.css';
+import { getTickets } from '../utils/api/TicketApi';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
+
+  const [tickets, setTickets] = useState([]);
 
   // let history = useHistory();
 
@@ -20,13 +21,12 @@ const SearchBar = () => {
   }
 
   const search = () => {
-    location.replace(window.location.href.replace('3000', '3004/tickets'));
+    getTickets()
+      .then((res) => res.json())
+      .then((res) => setTickets(res));
   };
 
-  // todo: show tickets or error (nothing was found)
-  // function handleSearchClick() {
-  //   console.log('Search.');
-  // }
+  console.log(tickets);
 
   return (
     <Form>
