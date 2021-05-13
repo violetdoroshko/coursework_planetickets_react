@@ -7,6 +7,7 @@ import TicketCard from './components/TicketCard';
 import { TICKETS_URL } from './utils/consts';
 import Register from './components/Register';
 import './index.css';
+import Account from './components/Account';
 
 const Main = () => (
   <BrowserRouter basename="/">
@@ -15,6 +16,7 @@ const Main = () => (
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/4" exact component={TicketCard} />
+      <Route path="/account" exact component={Account} />
       <Redirect from="/search" to={TICKETS_URL} />
     </Switch>
   </BrowserRouter>
