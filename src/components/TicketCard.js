@@ -20,26 +20,28 @@ const TicketCard = ({
         <div className="card cardLeft">
           <h1>AviaSales</h1>
           <Table className="card-table">
-            <tr>
-              <th>
-                <div className="departure">
-                  <h2>Откуда: {departure}</h2>
-                  <span>
-                    {departure_date}&nbsp;
-                    {departure_time}
-                  </span>
-                </div>
-              </th>
-              <th>
-                <div className="destination">
-                  <h2>Куда: {destination}</h2>
-                  <span>
-                    {destination_date}&nbsp;
-                    {destination_time}
-                  </span>
-                </div>
-              </th>
-            </tr>
+            <tbody>
+              <tr>
+                <th>
+                  <div className="departure">
+                    <h2>Откуда: {departure}</h2>
+                    <span>
+                      {departure_date}&nbsp;
+                      {departure_time}
+                    </span>
+                  </div>
+                </th>
+                <th>
+                  <div className="destination">
+                    <h2>Куда: {destination}</h2>
+                    <span>
+                      {destination_date}&nbsp;
+                      {destination_time}
+                    </span>
+                  </div>
+                </th>
+              </tr>
+            </tbody>
           </Table>
         </div>
         <div className="card cardRight">
