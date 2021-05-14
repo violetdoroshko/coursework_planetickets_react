@@ -1,6 +1,6 @@
 import React from 'react';
 import '../index.css';
-import { Button, Container, Table } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 const TicketCard = ({
@@ -19,30 +19,22 @@ const TicketCard = ({
       <Container className="cardWrap">
         <div className="card cardLeft">
           <h1>AviaSales</h1>
-          <Table className="card-table">
-            <tbody>
-              <tr>
-                <th>
-                  <div className="departure">
-                    <h2>Откуда: {departure}</h2>
-                    <span>
-                      {departure_date}&nbsp;
-                      {departure_time}
-                    </span>
-                  </div>
-                </th>
-                <th>
-                  <div className="destination">
-                    <h2>Куда: {destination}</h2>
-                    <span>
-                      {destination_date}&nbsp;
-                      {destination_time}
-                    </span>
-                  </div>
-                </th>
-              </tr>
-            </tbody>
-          </Table>
+          <Container>
+            <div className="departure">
+              <h2>Откуда: {departure}</h2>
+              <span>
+                {departure_date}&nbsp;
+                {departure_time}
+              </span>
+            </div>
+            <div className="destination">
+              <h2>Куда: {destination}</h2>
+              <span>
+                {destination_date}&nbsp;
+                {destination_time}
+              </span>
+            </div>
+          </Container>
         </div>
         <div className="card cardRight">
           <div className="price">
