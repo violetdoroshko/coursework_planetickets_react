@@ -1,7 +1,9 @@
 import React from 'react';
-// import './TicketCard.css';
+import '../index.css';
+import { Button, Container, Table } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
-const TicketCard = (
+const TicketCard = ({
   departure,
   departure_date,
   departure_time,
@@ -9,35 +11,49 @@ const TicketCard = (
   destination_date,
   destination_time,
   cost,
-) => {
+}) => {
+  let history = useHistory();
+
   return (
-    <article className="card fl-left">
-      <section className="price">
-        <span>{cost}</span>
-      </section>
-      <section className="card-cont">
-        <h3>from: {departure}</h3>
-        <div className="ticket-date">
-          <time>
-            <br />
-            <span>departure:</span>
-            <small>{departure_date}</small>
-            <br />
-            <small>{departure_time}</small>
-          </time>
+    <Container className="TicketCard">
+      <Container className="cardWrap">
+        <div className="card cardLeft">
+          <h1>AviaSales</h1>
+          <Table className="card-table">
+            <tbody>
+              <tr>
+                <th>
+                  <div className="departure">
+                    <h2>Откуда: {departure}</h2>
+                    <span>
+                      {departure_date}&nbsp;
+                      {departure_time}
+                    </span>
+                  </div>
+                </th>
+                <th>
+                  <div className="destination">
+                    <h2>Куда: {destination}</h2>
+                    <span>
+                      {destination_date}&nbsp;
+                      {destination_time}
+                    </span>
+                  </div>
+                </th>
+              </tr>
+            </tbody>
+          </Table>
         </div>
-        <h3>to: {destination}</h3>
-        <div className="ticket-date">
-          <time>
-            <br />
-            <span>destination:</span>
-            <small>{destination_date}</small>
-            <br />
-            <small>{destination_time}</small>
-          </time>
+        <div className="card cardRight">
+          <div className="price">
+            <h3>{cost}&nbsp;Br</h3>
+            <Button variant="danger" onClick={() => history.push('/account')}>
+              Купить
+            </Button>
+          </div>
         </div>
-      </section>
-    </article>
+      </Container>
+    </Container>
   );
 };
 

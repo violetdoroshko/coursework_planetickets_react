@@ -1,7 +1,7 @@
 @media all and (min-width: 300px) {
     /*Search*/
     .Search {
-        padding: 160px 0;
+        padding: 100px 0;
     }
 
     /*Login*/
@@ -84,4 +84,99 @@
     .Account .edit {
         padding-top: 40%;
     }
+
+    .TicketCard .cardWrap {
+        color: #fff;
+        font-family: sans-serif;
+        padding: 10px 10px 10px 70px;
+    }
+
+    .TicketCard .card {
+        background: linear-gradient(to bottom, #306fa7 0%, #007bff 25%, #ecedef 25%, #ecedef 100%);
+        float: left;
+        position: relative;
+        padding: 15px;
+        height: 100%;
+    }
+
+    .TicketCard .cardLeft {
+        width: 70%;
+        height: 200px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    .TicketCard .cardRight {
+        width: 20%;
+        height: 200px;
+        border-left: .18em dashed #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .TicketCard .cardRight:before, .TicketCard .cardRight:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: .9em;
+        height: .9em;
+        background: #fff;
+        border-radius: 50%;
+        left: -.5em;
+    }
+
+    .TicketCard .cardRight:before {
+        top: -.4em;
+    }
+
+    .TicketCard .cardRight:after {
+        bottom: -.4em;
+    }
+
+    .TicketCard .card-table th {
+        background: #ecedef;
+        color: #a2aeae;
+    }
+
+    .TicketCard h1 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 0;
+    }
+
+
+    .TicketCard .departure, .destination {
+        text-transform: uppercase;
+        font-weight: normal;
+        margin: 2em 0 0 0;
+    }
+
+    .TicketCard .departure h2, .destination h2 {
+        font-size: 1.1em;
+        color: #110101;
+        margin: 0;
+    }
+
+    .TicketCard .departure span, .destination span {
+        font-size: 1em;
+        color: rgba(17, 1, 1, 0.82);
+    }
+
+    .TicketCard .price {
+        text-align: center;
+    }
+
+    .TicketCard .price h3 {
+        color: #306fa7;
+        font-weight: bold;
+        margin: .9em 0 0 0;
+        font-size: 2.5em;
+
+    }
+
+    .TicketCard .price span {
+        display: block;
+        color: #a2aeae;
+    }
+
 }

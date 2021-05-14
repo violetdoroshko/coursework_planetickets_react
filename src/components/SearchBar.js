@@ -3,15 +3,15 @@ import { Button, Form, Table } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
-// import { useHistory } from 'react-router-dom';
-// import './Sign.css';
+import { getTickets } from '../utils/api/TicketApi';
+import TicketCard from '../components/TicketCard';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
 
-  // let history = useHistory();
+  const [tickets, setTickets] = useState(null);
 
   function handleSwapClick() {
     const temp = departure;
@@ -20,16 +20,13 @@ const SearchBar = () => {
   }
 
   const search = () => {
-    location.replace(window.location.href.replace('3000', '3004/tickets'));
+    getTickets()
+      .then((res) => res.json())
+      .then((res) => setTickets(res));
   };
 
-  // todo: show tickets or error (nothing was found)
-  // function handleSearchClick() {
-  //   console.log('Search.');
-  // }
-
   return (
-    <Form>
+    <Form className="Search">
       <Table borderless={'true'}>
         <thead>
           <tr>
@@ -81,6 +78,7 @@ const SearchBar = () => {
                 placeholder="Когда"
                 name="date"
                 value={date}
+                style={{ height: '40px' }}
                 onChange={(event) => setDate(event.target.value)}
               />
             </th>
@@ -92,6 +90,30 @@ const SearchBar = () => {
           </tr>
         </tbody>
       </Table>
+
+      {tickets ? (
+        <Table borderless="true">
+          <tbody>
+            {tickets.map((ticket) => {
+              return (
+                <tr key={ticket.id}>
+                  <td style={{ height: '11em' }}>
+                    <TicketCard
+                      departure={ticket.departure}
+                      departure_date={ticket.departure_date}
+                      departure_time={ticket.departure_time}
+                      destination={ticket.destination}
+                      destination_date={ticket.destination_date}
+                      destination_time={ticket.destination_time}
+                      cost={ticket.cost}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      ) : null}
     </Form>
   );
 };
