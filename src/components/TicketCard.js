@@ -1,6 +1,7 @@
 import React from 'react';
 import '../index.css';
 import { Button, Container, Table } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 const TicketCard = ({
   departure,
@@ -11,6 +12,8 @@ const TicketCard = ({
   destination_time,
   cost,
 }) => {
+  let history = useHistory();
+
   return (
     <Container className="TicketCard">
       <Container className="cardWrap">
@@ -41,8 +44,10 @@ const TicketCard = ({
         </div>
         <div className="card cardRight">
           <div className="price">
-            <h3>{cost}Br</h3>
-            <Button variant="danger">Купить</Button>
+            <h3>{cost}&nbsp;Br</h3>
+            <Button variant="danger" onClick={() => history.push('/account')}>
+              Купить
+            </Button>
           </div>
         </div>
       </Container>

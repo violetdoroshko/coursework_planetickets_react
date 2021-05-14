@@ -25,8 +25,6 @@ const SearchBar = () => {
       .then((res) => setTickets(res));
   };
 
-  console.log(tickets);
-
   return (
     <Form className="Search">
       <Table borderless={'true'}>
@@ -95,23 +93,25 @@ const SearchBar = () => {
 
       {tickets ? (
         <Table borderless="true">
-          {tickets.map((ticket) => {
-            return (
-              <tr key={ticket.id} style={{ height: '11em' }}>
-                <td>
-                  <TicketCard
-                    departure={ticket.departure}
-                    departure_date={ticket.departure_date}
-                    departure_time={ticket.departure_time}
-                    destination={ticket.destination}
-                    destination_date={ticket.destination_date}
-                    destination_time={ticket.destination_time}
-                    cost={ticket.cost}
-                  />
-                </td>
-              </tr>
-            );
-          })}
+          <tbody>
+            {tickets.map((ticket) => {
+              return (
+                <tr key={ticket.id}>
+                  <td style={{ height: '11em' }}>
+                    <TicketCard
+                      departure={ticket.departure}
+                      departure_date={ticket.departure_date}
+                      departure_time={ticket.departure_time}
+                      destination={ticket.destination}
+                      destination_date={ticket.destination_date}
+                      destination_time={ticket.destination_time}
+                      cost={ticket.cost}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </Table>
       ) : null}
     </Form>
