@@ -10,31 +10,41 @@ const schema = yup.object().shape({
   firstName: yup
     .string()
     .trim()
-    .required('First name is required')
-    .max(20, 'First name is too long, maximum {max} characters can be specified.'),
+    .required("'Имя' обязательно для заполнения.")
+    .max(20, 'Имя слишком длинное, максимум {max} символов.'),
   lastName: yup
     .string()
     .trim()
-    .required('Last name is required')
-    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
+    .required("'Фамилия' обязательно для заполнения.")
+    .max(20, 'Фамилия слишком длинная, максимум {max} символов.'),
   passport: yup
     .string()
     .trim()
-    .required('passport is required')
-    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
-  phoneNumber: yup.string().trim().required('phoneNumber is required').min(9, 'min').max(9, 'max'),
+    .required("'Паспорт' обязательно для заполнения.")
+    .max(20, 'Паспорт слишком длинный, максимум {max} символов.'),
+  phoneNumber: yup
+    .string()
+    .trim()
+    .required("'Номер телефона' обязательно для заполнения.")
+    .min(9, 'Номер телефона слишком короткий, должно быть {min} символов.')
+    .max(9, 'Номер телефона слишком длинный, должно быть {max} символов.'),
   email: yup
     .string()
     .trim()
-    .required('Last name is required')
-    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
+    .required("'Email' обязательно для заполнения.")
+    .max(20, 'Email слишком длинный, максимум {max} символов.'),
   password: yup
     .string()
     .trim()
-    .required('password is required')
-    .min(7, 'Last name is too long, minimum {min} characters can be specified.')
-    .max(20, 'Last name is too long, maximum {max} characters can be specified.'),
-  repeatedPass: yup.string().trim().required('Repeat password'),
+    .required("'Пароль' обязательно для заполнения.")
+    .min(7, 'Пароль слишком короткий, минимум {min} символов.')
+    .max(20, 'Пароль слишком длинный, максимум {max} символов.'),
+  repeatedPass: yup
+    .string()
+    .trim()
+    .required("'Пароль' обязательно для заполнения.")
+    .min(7, 'Пароль слишком короткий, минимум {min} символов.')
+    .max(20, 'Пароль слишком длинный, максимум {max} символов.'),
 });
 
 const Register = () => {
@@ -65,8 +75,8 @@ const Register = () => {
             <h5>Личные данные</h5>
 
             <div className="form-inline" onChange={handleGender}>
-              <Form.Check inline label="Женщина" type="radio" />
-              <Form.Check inline label="Мужчина" type="radio" />
+              <Form.Check inline label="Женщина" type="radio" name="gender" />
+              <Form.Check inline label="Мужчина" type="radio" name="gender" />
             </div>
 
             <Form.Control {...register('lastName')} placeholder="Фамилия" isInvalid={errors.lastName} />
@@ -74,7 +84,13 @@ const Register = () => {
             <Form.Control {...register('firstName')} placeholder="Имя" isInvalid={errors.firstName} />
             <Form.Control.Feedback type={'invalid'}>{errors.firstName?.message}</Form.Control.Feedback>
 
-            <Form.Control name="birth" type="date" {...register('idDate')} />
+            <Form.Control
+              name="birth"
+              type="text"
+              onFocus={(e) => (e.target.type = 'date')}
+              placeholder="Дата рождения"
+              {...register('idDate')}
+            />
           </Form.Group>
 
           <br />
@@ -82,12 +98,20 @@ const Register = () => {
           <Form.Group className="form">
             <h5>Паспортные данные</h5>
             <Form.Control as="select" name="checkingPassportValue">
-              <option key="blankChoice" hidden value />
+              <option value="" disabled selected hidden>
+                Гражданство
+              </option>
               <option value="0">Belarus</option>
             </Form.Control>
             <Form.Control {...register('passport')} placeholder="Серия и номер паспорта" />
             <Form.Control.Feedback type={'invalid'}>{errors.passport?.message}</Form.Control.Feedback>
-            <Form.Control name="idDate" type="date" {...register('idDate')} />
+            <Form.Control
+              name="idDate"
+              type="text"
+              onFocus={(e) => (e.target.type = 'date')}
+              placeholder="Срок действия"
+              {...register('idDate')}
+            />
           </Form.Group>
 
           <br />
@@ -95,7 +119,9 @@ const Register = () => {
           <Form.Group className="form">
             <h5>Контактная информация</h5>
             <Form.Control as="select" name="checkingValue">
-              <option key="blankChoice" hidden value />
+              <option value="" disabled selected hidden>
+                Код
+              </option>
               <option value="0">+375(Belarus)</option>
             </Form.Control>
             <Form.Control {...register('phoneNumber')} placeholder="Номер телефона" />
