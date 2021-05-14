@@ -37,7 +37,9 @@ const Login = () => {
 
   const login = (user) => {
     //todo: if status ok then user's page
-    loginUser(user).then((response) => console.log(response));
+    loginUser(user)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
 
   return (

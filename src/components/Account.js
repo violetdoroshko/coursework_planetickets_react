@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Account = () => {
+  function editUser() {}
+
   return (
     <>
       <Header />
@@ -31,7 +33,7 @@ const Account = () => {
               </th>
               <td>
                 <div className="edit">
-                  <Button variant="primary">
+                  <Button variant="primary" onClick={editUser}>
                     <FontAwesomeIcon icon={faPencilAlt} />
                     &nbsp;Редактировать
                   </Button>
