@@ -19,7 +19,7 @@ const TicketCard = ({
       <Container className="cardWrap">
         <div className="card cardLeft">
           <h1>AviaSales</h1>
-          <Container>
+          <div className="ticket-content">
             <div className="departure">
               <h2>Откуда: {departure}</h2>
               <span>
@@ -34,7 +34,7 @@ const TicketCard = ({
                 {destination_time}
               </span>
             </div>
-          </Container>
+          </div>
         </div>
         <div className="card cardRight">
           <div className="price">
