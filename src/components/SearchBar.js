@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { getTickets } from '../utils/api/TicketApi';
 import TicketCard from '../components/TicketCard';
-import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
   const [departure, setDeparture] = useState('');
@@ -13,8 +12,6 @@ const SearchBar = () => {
   const [date, setDate] = useState('');
 
   const [tickets, setTickets] = useState(null);
-
-  let history = useHistory();
 
   function handleSwapClick() {
     const temp = departure;
@@ -31,7 +28,7 @@ const SearchBar = () => {
   console.log(tickets);
 
   return (
-    <Form>
+    <Form className="Search">
       <Table borderless={'true'}>
         <thead>
           <tr>
@@ -83,6 +80,7 @@ const SearchBar = () => {
                 placeholder="Когда"
                 name="date"
                 value={date}
+                style={{ height: '40px' }}
                 onChange={(event) => setDate(event.target.value)}
               />
             </th>
@@ -96,35 +94,24 @@ const SearchBar = () => {
       </Table>
 
       {tickets ? (
-        <Table>
-          <thead>
-            <tr>
-              <th />
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {tickets.map((ticket) => {
-              return (
-                <tr key={ticket.id}>
-                  <td>
-                    <TicketCard
-                      departure={ticket.departure}
-                      departure_date={ticket.departure_date}
-                      departure_time={ticket.departure_time}
-                      destination={ticket.destination}
-                      destination_date={ticket.destination_date}
-                      destination_time={ticket.destination_time}
-                      cost={ticket.cost}
-                    />
-                  </td>
-                  <td>
-                    <Button onClick={() => history.push('/account')}>Купить</Button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
+        <Table borderless="true">
+          {tickets.map((ticket) => {
+            return (
+              <tr key={ticket.id} style={{ height: '11em' }}>
+                <td>
+                  <TicketCard
+                    departure={ticket.departure}
+                    departure_date={ticket.departure_date}
+                    departure_time={ticket.departure_time}
+                    destination={ticket.destination}
+                    destination_date={ticket.destination_date}
+                    destination_time={ticket.destination_time}
+                    cost={ticket.cost}
+                  />
+                </td>
+              </tr>
+            );
+          })}
         </Table>
       ) : null}
     </Form>
