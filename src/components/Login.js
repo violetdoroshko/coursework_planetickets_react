@@ -47,25 +47,33 @@ const Login = () => {
       <Header />
       <Container className="Login">
         <h2>Вход в личный кабинет</h2>
-        {/*todo error message UI*/}
-        {errors.apiError && <span>{errors.apiError.message}</span>}
         <Container className="Form">
           <Form>
+            {/*todo error message UI*/}
+            {errors.apiError && (
+              <Form.Group>
+                <Form.Control.Feedback type="`invalid`" style={{ color: 'red' }}>
+                  {errors.apiError.message}
+                </Form.Control.Feedback>
+              </Form.Group>
+            )}
+
             <Form.Group size="lg" controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control autoFocus type="email" placeholder="Email" {...register('email')} />
-              <Form.Control.Feedback type={'invalid'}>{errors.email?.message}</Form.Control.Feedback>
+              {/*<Form.Control.Feedback type="`invalid`">{errors.email?.message}</Form.Control.Feedback>*/}
             </Form.Group>
 
             <Form.Group size="lg" controlId="formBasicPassword">
               <Form.Label>Пароль</Form.Label>
               <Form.Control type="password" placeholder="Пароль" {...register('password')} />
-              <Form.Control.Feedback type={'invalid'}>{errors.password?.message}</Form.Control.Feedback>
+              {/*<Form.Control.Feedback type="`invalid`">{errors.password?.message}</Form.Control.Feedback>*/}
             </Form.Group>
             <Button variant="primary" onClick={handleSubmit(login)}>
               Войти
             </Button>
             <br />
+
             <NavLink name="link" variant="primary" onClick={() => history.push('/register')}>
               <FontAwesomeIcon icon={faSignInAlt} />
               &nbsp;Зарегистрироваться
