@@ -5,23 +5,15 @@ import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import Header from './Header';
 import '../index.css';
+
 import { loginUser } from '../utils/api/TicketApi';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .trim()
-    .required("'Email' обязательно для заполнения.")
-    .max(20, 'Email слишком длинный, максимум {max} символов.'),
-  password: yup
-    .string()
-    .trim()
-    .required("'Пароль' обязательно для заполнения.")
-    .min(7, 'Пароль слишком короткий, минимум {min} символов.')
-    .max(20, 'Пароль слишком длинный, максимум {max} символов.'),
+  email: yup.string().trim().required("'Email' обязательно для заполнения."),
+  password: yup.string().trim().required("'Пароль' обязательно для заполнения."),
 });
 
 const Login = () => {
@@ -29,6 +21,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -36,10 +29,17 @@ const Login = () => {
   let history = useHistory();
 
   const login = (user) => {
-    //todo: if status ok then user's page
     loginUser(user)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.accessToken) {
+          localStorage.setItem('accessToken', data.accessToken);
+          history.push('/account');
+        } else {
+          setError('apiError', { type: 'api', message: data });
+          localStorage.setItem('accessToken', null);
+        }
+      });
   };
 
   return (
@@ -47,6 +47,8 @@ const Login = () => {
       <Header />
       <Container className="Login">
         <h2>Вход в личный кабинет</h2>
+        {/*todo error message UI*/}
+        {errors.apiError && <span>{errors.apiError.message}</span>}
         <Container className="Form">
           <Form>
             <Form.Group size="lg" controlId="formBasicEmail">

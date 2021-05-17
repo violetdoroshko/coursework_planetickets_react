@@ -99,6 +99,7 @@ const SearchBar = () => {
                 <tr key={ticket.id}>
                   <td style={{ height: '11em' }}>
                     <TicketCard
+                      ticketId={ticket.id}
                       departure={ticket.departure}
                       departure_date={ticket.departure_date}
                       departure_time={ticket.departure_time}
