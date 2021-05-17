@@ -116,24 +116,14 @@
       "id": 1,
       "tickets": [
         {
-          "id": 1,
+          "id": 3,
           "departure": "Minsk",
-          "departure_date": "22-05-2021",
-          "departure_time": "14:30",
-          "destination": "Moscow",
-          "destination_date": "22-05-2021",
-          "destination_time": "19:30",
-          "cost": "145"
-        },
-        {
-          "id": 1,
-          "departure": "Minsk",
-          "departure_date": "22-05-2021",
-          "departure_time": "14:30",
-          "destination": "Moscow",
-          "destination_date": "22-05-2021",
-          "destination_time": "19:30",
-          "cost": "145"
+          "departure_date": "29-05-2021",
+          "departure_time": "23:30",
+          "destination": "Warsaw",
+          "destination_date": "30-05-2021",
+          "destination_time": "03:30",
+          "cost": "200"
         },
         {
           "id": 1,

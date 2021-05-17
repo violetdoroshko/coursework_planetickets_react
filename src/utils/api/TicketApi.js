@@ -1,7 +1,6 @@
 import { CART_URL, LOGIN_URL, REGISTER_URL, TICKETS_URL, USERS_URL } from '../consts';
 
 export async function registerUser(newUser) {
-  //todo add cart ID = user ID
   return await fetch(REGISTER_URL, {
     method: 'POST',
     headers: {
@@ -39,13 +38,18 @@ export async function getTicket(ticketId) {
   });
 }
 
-export async function editUser(updatedData, userId) {
-  return await fetch(USERS_URL + '/' + userId, {
+export async function editUser(updatedData) {
+  return await fetch(USERS_URL + '/' + updatedData.id, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(updatedData),
+    body: JSON.stringify({
+      firstName: updatedData.firstName,
+      lastName: updatedData.lastName,
+      passport: updatedData.passport,
+      phoneNumber: updatedData.phoneNumber,
+    }),
   });
 }
 

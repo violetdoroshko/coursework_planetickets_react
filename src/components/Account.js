@@ -42,14 +42,7 @@ const Account = () => {
   }
 
   function editUserData() {
-    // setLoading(true);
-    // editUser(user)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setUser(data);
-    //     // setCart(data);
-    //     setLoading(false);
-    //   });
+    history.push('/register');
   }
 
   return (
@@ -79,7 +72,7 @@ const Account = () => {
                   </th>
                   <th>
                     <div className="edit">
-                      <Button variant="primary" onClick={editUserData}>
+                      <Button variant="primary" disabled onClick={editUserData}>
                         <FontAwesomeIcon icon={faPencilAlt} />
                         &nbsp;Редактировать
                       </Button>
