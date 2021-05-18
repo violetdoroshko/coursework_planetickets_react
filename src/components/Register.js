@@ -4,7 +4,8 @@ import Header from './Header';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { registerUser } from '../utils/api/TicketApi';
+import { editUser, getUser, registerUser } from '../utils/api/TicketApi';
+import jwt_decode from 'jwt-decode';
 
 const schema = yup.object().shape({
   firstName: yup
@@ -37,13 +38,13 @@ const schema = yup.object().shape({
     .string()
     .trim()
     .required("'Пароль' обязательно для заполнения.")
-    .min(7, 'Пароль слишком короткий, минимум {min} символов.')
+    .min(5, 'Пароль слишком короткий, минимум {min} символов.')
     .max(20, 'Пароль слишком длинный, максимум {max} символов.'),
   repeatedPass: yup
     .string()
     .trim()
     .required("'Пароль' обязательно для заполнения.")
-    .min(7, 'Пароль слишком короткий, минимум {min} символов.')
+    .min(5, 'Пароль слишком короткий, минимум {min} символов.')
     .max(20, 'Пароль слишком длинный, максимум {max} символов.'),
 });
 
@@ -55,14 +56,35 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (newUser) => registerUser(newUser);
+  const onSubmit = (newUser) => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken === null) {
+      registerUser(newUser);
+    } else {
+      editUser(newUser);
+      history.push('/');
+    }
+  };
 
   const [gender, setGender] = React.useState(true);
 
-  //todo: change gender only
   const handleGender = () => {
     setGender(!gender);
   };
+
+  const [user, setUser] = React.useState();
+
+  React.useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken === null) {
+      history.push('/login');
+    } else {
+      const decoded = jwt_decode(accessToken);
+      getUser(accessToken, decoded.sub)
+        .then((response) => response.json())
+        .then((data) => setUser(data));
+    }
+  });
 
   return (
     <>
@@ -70,7 +92,6 @@ const Register = () => {
       <Container className="Register">
         <h2>Регистрация</h2>
         <Form className="form" onSubmit={handleSubmit(onSubmit)}>
-          {/* todo: gender*/}
           <Form.Group className="form">
             <h5>Личные данные</h5>
 
@@ -89,7 +110,7 @@ const Register = () => {
               type="text"
               onFocus={(e) => (e.target.type = 'date')}
               placeholder="Дата рождения"
-              {...register('idDate')}
+              {...register('birth')}
             />
           </Form.Group>
 
@@ -98,7 +119,7 @@ const Register = () => {
           <Form.Group className="form">
             <h5>Паспортные данные</h5>
             <Form.Control as="select" name="checkingPassportValue">
-              <option value="" disabled selected hidden>
+              <option key="blankChoice" hidden value>
                 Гражданство
               </option>
               <option value="0">Belarus</option>
@@ -119,7 +140,7 @@ const Register = () => {
           <Form.Group className="form">
             <h5>Контактная информация</h5>
             <Form.Control as="select" name="checkingValue">
-              <option value="" disabled selected hidden>
+              <option key="blankChoice" hidden value>
                 Код
               </option>
               <option value="0">+375(Belarus)</option>
@@ -129,19 +150,21 @@ const Register = () => {
           </Form.Group>
 
           <br />
-
-          <Form.Group className="form">
-            <h5>Пользовательские данные</h5>
-            <Form.Control {...register('email')} placeholder="Email" />
-            <Form.Control.Feedback type={'invalid'}>{errors.email?.message}</Form.Control.Feedback>
-            <Form.Control {...register('password')} placeholder="Пароль" />
-            <Form.Control.Feedback type={'invalid'}>{errors.password?.message}</Form.Control.Feedback>
-            <Form.Control {...register('repeatedPass')} placeholder="Повторите пароль" />
-            <Form.Control.Feedback type={'invalid'}>{errors.repeatedPass?.message}</Form.Control.Feedback>
-          </Form.Group>
+          {!user && (
+            <Form.Group className="form">
+              <h5>Пользовательские данные</h5>
+              <Form.Control {...register('email')} placeholder="Email" />
+              <Form.Control.Feedback type={'invalid'}>{errors.email?.message}</Form.Control.Feedback>
+              <Form.Control {...register('password')} placeholder="Пароль" />
+              <Form.Control.Feedback type={'invalid'}>{errors.password?.message}</Form.Control.Feedback>
+              <Form.Control {...register('repeatedPass')} placeholder="Повторите пароль" />
+              <Form.Control.Feedback type={'invalid'}>{errors.repeatedPass?.message}</Form.Control.Feedback>
+            </Form.Group>
+          )}
           <Form.Group className="button-form">
             <Button variant="primary" type="submit">
-              Зарегистрироваться
+              {!user && 'Зарегистрироваться'}
+              {user && 'Изменить'}
             </Button>
           </Form.Group>
         </Form>

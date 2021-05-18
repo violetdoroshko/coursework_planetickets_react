@@ -103,26 +103,39 @@
   ],
   "users": [
     {
-      "email": "em@gmail.com",
-      "password": "$2a$10$6ZIcJAyvif2tRkCJuNYE..XXT2OtQYh4fOBhqfRs5WwRqdolbZrcC",
-      "id": 1
-    },
-    {
       "email": "123@gmail.com",
-      "password": "$2a$10$g9FoHsYbPpl.oT7LbE710.lRCOutsK5/ptKFEHR1ZM6jGjyBXs3EK",
-      "firstName": "VLAD",
+      "password": "$2a$10$cwVXZ5btoZzeWk7.782lW.OJohSwCtTRXSlLfSd1A8lFHzA/piLAy",
+      "firstName": "Виолетта",
+      "lastName": "Дорошко",
+      "cart": 1,
       "id": 2
-    },
+    }
+  ],
+  "cart": [
     {
-      "email": "1@gmail.com",
-      "password": "$2a$10$YF8d/1LfTZKghLs5AQ7i2eDOE9ryvxWQ6e8q3UpeEq.uUdnSlp/0e",
-      "lastName": "1",
-      "firstName": "1",
-      "idDate": "",
-      "passport": "1",
-      "phoneNumber": "",
-      "repeatedPass": "",
-      "id": 3
+      "id": 1,
+      "tickets": [
+        {
+          "id": 3,
+          "departure": "Minsk",
+          "departure_date": "29-05-2021",
+          "departure_time": "23:30",
+          "destination": "Warsaw",
+          "destination_date": "30-05-2021",
+          "destination_time": "03:30",
+          "cost": "200"
+        },
+        {
+          "id": 1,
+          "departure": "Minsk",
+          "departure_date": "22-05-2021",
+          "departure_time": "14:30",
+          "destination": "Moscow",
+          "destination_date": "22-05-2021",
+          "destination_time": "19:30",
+          "cost": "145"
+        }
+      ]
     }
   ]
 }

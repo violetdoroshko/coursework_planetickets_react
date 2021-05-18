@@ -2,8 +2,11 @@ import React from 'react';
 import '../index.css';
 import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+import { getTicket, getUser, addTicketToCart, getCartData } from '../utils/api/TicketApi';
 
 const TicketCard = ({
+  ticketId,
   departure,
   departure_date,
   departure_time,
@@ -11,8 +14,32 @@ const TicketCard = ({
   destination_date,
   destination_time,
   cost,
+  buyable = true,
 }) => {
   let history = useHistory();
+
+  function buyTicket(ticketId) {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken === null) {
+      history.push('/login');
+    } else {
+      const decoded = jwt_decode(accessToken);
+      getUser(accessToken, decoded.sub)
+        .then((response) => response.json())
+        .then((data) => {
+          getTicket(ticketId)
+            .then((response) => response.json())
+            .then((ticket) => addTicket(ticket, data?.cart));
+        });
+      history.push('/account');
+    }
+  }
+
+  function addTicket(ticket, cartId) {
+    getCartData(cartId)
+      .then((response) => response.json())
+      .then((cart) => addTicketToCart(ticket, cart));
+  }
 
   return (
     <Container className="TicketCard">
@@ -39,9 +66,11 @@ const TicketCard = ({
         <div className="card cardRight">
           <div className="price">
             <h3>{cost}&nbsp;Br</h3>
-            <Button variant="danger" onClick={() => history.push('/account')}>
-              Купить
-            </Button>
+            {buyable && (
+              <Button variant="danger" onClick={() => buyTicket(ticketId)}>
+                Купить
+              </Button>
+            )}
           </div>
         </div>
       </Container>
